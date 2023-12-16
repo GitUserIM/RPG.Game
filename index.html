@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="left">
+        <h1>Player Name</h1><br>
+        <h2>Health: <span id="player-health"></span></h2><br>
+        <h2>Defence: <span id="player-defence"></span></h2><br>
+        <h2>Power <span id="player-power"></span></h2><br>
+        <h2>Stamina: </h2>
+        <div class="player-actions">
+            <button id="player-attack">ATTACK!</button>
+            <button id="player-block">DEFEND!</button>
+            <button id="player-inventory">INVENTORY</button>
+        </div>
+    </div>
+    <div class="right">
+        <h1>Boss Name</h1><br>
+        <h2>Health: <span id="boss-health"></span></h2><br>
+        <h2>Defence: <span id="boss-defence"></span></h2><br>
+        <h2>Power <span id="boss-power"></span></h2><br>
+        <h2>Stamina: </h2>
+    </div>
+    <div class="inventory-menu">
+        <button class="item" onclick="useItem(0)">HF + <span id="hf"></span></button><br>
+        <button class="item" onclick="useItem(1)">DEF + <span id="def"></span></button><br>
+        <button class="item" onclick="useItem(2)">POW + <span id="pow"></span></button>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>
