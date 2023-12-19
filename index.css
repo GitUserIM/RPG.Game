@@ -1,7 +1,3 @@
-/* body{
-    height: 100%;
-} */
-
 .left{
     position: fixed;
     top: 0;
@@ -24,16 +20,16 @@
 }
 
 .item{
-    width: 15%;
+    width: 50%;
 
-    margin: 0 0 12% 0;
+    margin: 0 0 42% 0;
 }
 
 .inventory-menu{
     position: fixed;
     top: 20%;
     left: -100%;
-    height: 40%;
-    width: 35%;
+    height: 60%;
+    width: 10%;
     background-color: rgba(250, 235, 215, 0.433);
 }
