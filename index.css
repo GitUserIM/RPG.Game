@@ -19,6 +19,12 @@
     top: 5%;
 }
 
+button{
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
 .item{
     width: 50%;
 
@@ -29,7 +35,7 @@
     position: fixed;
     top: 20%;
     left: -100%;
-    height: 60%;
-    width: 10%;
+    height: 333px;
+    width: 150px;
     background-color: rgba(250, 235, 215, 0.433);
 }

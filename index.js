@@ -10,7 +10,7 @@ let player = {
     isDefending: false,
     actions: {
         Attack: document.querySelector('#player-attack'),
-        Block: document.querySelector('#player-block'),
+        Defend: document.querySelector('#player-defend'),
         Inventory: document.querySelector('#player-inventory')
     },
     Inventory: [
@@ -54,7 +54,7 @@ player.actions.Attack.addEventListener('click', _ => {
     bossAction(searchValidNumber())
 })
 
-player.actions.Block.addEventListener('click', _ => {
+player.actions.Defend.addEventListener('click', _ => {
     riseShield(player);
 
     bossAction(searchValidNumber())
@@ -64,10 +64,14 @@ player.actions.Inventory.addEventListener('click', _ => {
     if (!isMenuVisible) {
         menu.style.left = 0;
         isMenuVisible = true
+        player.actions.Attack.style.textDecoration = "line-through"
+        player.actions.Defend.style.textDecoration = "line-through"
         return
     }
     menu.style.left = '-100%'
     isMenuVisible = false
+    player.actions.Attack.style.textDecoration = ""
+    player.actions.Defend.style.textDecoration = ""
 })
 
 let bossAction = (bossMove) => {
@@ -107,9 +111,7 @@ let riseShield = (entity) => {
 }
 
 let useItem = (entity, index) => {
-
     if (entity === null) entity = player;
-    console.log(entity.Health)
     switch (index) {
         case 0:
             entity.Health.innerHTML = parseInt(entity.Health.innerHTML) + entity.Inventory[index]
