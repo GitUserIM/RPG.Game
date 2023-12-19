@@ -81,8 +81,10 @@ let bossAction = (bossMove) => {
             riseShield(boss)
             break;
         case '3'://Use Item
+            useItem(boss, searchValidNumber() - 1)
             break;
     }
+
     if (player.Health.innerHTML <= 0) {
         alert('Game over')
     } else if (boss.Health.innerHTML <= 0) {
@@ -104,19 +106,22 @@ let riseShield = (entity) => {
     }
 }
 
-let useItem = (index) => {
+let useItem = (entity, index) => {
+
+    if (entity === null) entity = player;
+    console.log(entity.Health)
     switch (index) {
         case 0:
-            player.Health.innerHTML = parseInt(player.Health.innerHTML) + player.Inventory[index]
+            entity.Health.innerHTML = parseInt(entity.Health.innerHTML) + entity.Inventory[index]
             break;
         case 1:
-            player.Defence.innerHTML = parseInt(player.Defence.innerHTML) + player.Inventory[index]
+            entity.Defence.innerHTML = parseInt(entity.Defence.innerHTML) + entity.Inventory[index]
             break;
         case 2:
-            player.Power.innerHTML = parseInt(player.Power.innerHTML) + player.Inventory[index]
+            entity.Power.innerHTML = parseInt(entity.Power.innerHTML) + entity.Inventory[index]
             break;
     }
-    bossAction(searchValidNumber())
+    if (isMenuVisible) bossAction(searchValidNumber())
 }
 
 let searchValidNumber = _ => {
@@ -124,7 +129,7 @@ let searchValidNumber = _ => {
     while (random === null) {
         random = Math.random().toFixed(1).charAt(2)
 
-        for (let i = 1; i <= player.Inventory.length; i++) {
+        for (let i = 1; i <= boss.Inventory.length; i++) {
             if (random == i) return random;
         }
         random = null;
