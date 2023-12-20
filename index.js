@@ -1,4 +1,5 @@
 let menu = document.querySelector('.inventory-menu')
+let restartGame = document.querySelector('.restart-game')
 
 var isMenuVisible = false;
 
@@ -36,14 +37,19 @@ document.querySelector('#hf').innerHTML = player.Inventory[0]
 document.querySelector('#def').innerHTML = player.Inventory[1]
 document.querySelector('#pow').innerHTML = player.Inventory[2]
 
-player.Health.innerHTML = 100
-player.Power.innerHTML = 5
-player.Defence.innerHTML = 1.5
+function initGame() {
+    player.Health.innerHTML = 100
+    player.Power.innerHTML = 5
+    player.Defence.innerHTML = 1.5
 
-boss.Health.innerHTML = 500
-boss.Power.innerHTML = 10
-boss.Defence.innerHTML = 3;
+    boss.Health.innerHTML = 500
+    boss.Power.innerHTML = 10
+    boss.Defence.innerHTML = 3;
 
+    restartGame.innerHTML = ""
+}
+
+initGame();
 
 player.actions.Attack.addEventListener('click', _ => {
     lowerShield(player);
@@ -91,8 +97,10 @@ let bossAction = (bossMove) => {
 
     if (player.Health.innerHTML <= 0) {
         alert('Game over')
+        restartGame.innerHTML = `<button onclick="initGame()">RESTART</button>`
     } else if (boss.Health.innerHTML <= 0) {
         alert('You won!')
+        restartGame.innerHTML = `<button onclick="initGame()">RESTART</button>`
     }
 }
 
