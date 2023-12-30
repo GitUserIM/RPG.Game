@@ -149,6 +149,7 @@ let useItem = (entity, index) => {
             entity.Power.innerHTML = parseFloat(entity.Power.innerHTML) + entity.Inventory[index]
             break;
     }
+    lowerShield(entity)
     if (isMenuVisible) bossAction(searchValidNumber())
 }
 
