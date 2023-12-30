@@ -37,6 +37,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 10px;
+    z-index: 3;
 }
 
 .inventory-menu{
@@ -46,4 +47,27 @@
     height: 333px;
     width: 150px;
     background-color: rgba(250, 235, 215, 0.433);
+}
+
+#player-delta,
+#boss-delta{
+    position: absolute;
+    display: inline;
+    margin: 0 0 0 5%;
+    color: rgba(255, 0, 0, 0.717);
+    opacity: 0;
+}
+
+.fade-out{
+    animation-name: damage;
+    animation-duration: 4s;
+    animation-play-state: running;
+}
+
+@keyframes damage{
+    0%{opacity: 1;}
+    50%{opacity: 0.65;}
+    100%{
+        opacity: 0;
+    }
 }

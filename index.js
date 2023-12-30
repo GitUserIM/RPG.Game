@@ -7,6 +7,7 @@ let player = {
     Health: document.querySelector('#player-health'),
     Power: document.querySelector('#player-power'),
     Defence: document.querySelector('#player-defence'),
+    Damage: document.querySelector('#player-delta'),
     BuffDef: 1.5,
     isDefending: false,
     actions: {
@@ -25,6 +26,7 @@ let boss = {
     Health: document.querySelector('#boss-health'),
     Power: document.querySelector('#boss-power'),
     Defence: document.querySelector('#boss-defence'),
+    Damage: document.querySelector('#boss-delta'),
     BuffDef: 2.5,
     Inventory: [
         HfPotion = 10,
@@ -54,8 +56,16 @@ initGame();
 player.actions.Attack.addEventListener('click', _ => {
     lowerShield(player);
 
-    if (parseFloat(boss.Defence.innerHTML) < parseFloat(player.Power.innerHTML))
-        boss.Health.innerHTML -= parseFloat(player.Power.innerHTML - boss.Defence.innerHTML);
+    if (parseFloat(boss.Defence.innerHTML) < parseFloat(player.Power.innerHTML)) {
+        deltaHealth = parseFloat(player.Power.innerHTML - boss.Defence.innerHTML);
+        boss.Health.innerHTML -= deltaHealth
+        boss.Damage.innerHTML = `-${deltaHealth}`
+
+        boss.Damage.classList.remove('fade-out')
+        setTimeout(_ => boss.Damage.classList.add('fade-out'), 1)
+    } else {
+        boss.Damage.innerHTML = null
+    }
 
     bossAction(searchValidNumber())
 })
@@ -84,8 +94,16 @@ let bossAction = (bossMove) => {
     switch (bossMove) {
         case '1'://Attack
             lowerShield(boss)
-            if (parseFloat(player.Defence.innerHTML) < parseFloat(boss.Power.innerHTML))
-                player.Health.innerHTML -= parseFloat(boss.Power.innerHTML - player.Defence.innerHTML);
+            if (parseFloat(player.Defence.innerHTML) < parseFloat(boss.Power.innerHTML)) {
+                let deltaHealth = parseFloat(boss.Power.innerHTML - player.Defence.innerHTML);
+                player.Health.innerHTML -= deltaHealth
+                player.Damage.innerHTML = `-${deltaHealth}`
+
+                player.Damage.classList.remove('fade-out')
+                setTimeout(_ => player.Damage.classList.add('fade-out'), 1)
+            } else {
+                player.Damage.innerHTML = null
+            }
             break;
         case '2'://Defend
             riseShield(boss)
