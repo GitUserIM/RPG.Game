@@ -55,25 +55,13 @@
     display: inline;
     margin: 0 0 0 5%;
     color: rgba(255, 0, 0, 0.717);
-    /* animation-name: damage;
-    animation-duration: 4s;
-    opacity: 0; */
-    /* transition: opacity 1s; */
+    opacity: 0;
 }
 
 .fade-out{
-    /* opacity: 0; */
     animation-name: damage;
     animation-duration: 4s;
-    opacity: 0;
-
-    /* transition: opacity ease 1s; */
-    /* animation: damage 4s ease-in-out infinite; */
-}
-
-.fade-in{
-    /* opacity: 1; */
-    animation: damage 4s ease-out 1;
+    animation-play-state: running;
 }
 
 @keyframes damage{
@@ -81,6 +69,5 @@
     50%{opacity: 0.65;}
     100%{
         opacity: 0;
-        display: none;
     }
 }

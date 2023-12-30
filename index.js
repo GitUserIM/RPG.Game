@@ -60,13 +60,9 @@ player.actions.Attack.addEventListener('click', _ => {
         deltaHealth = parseFloat(player.Power.innerHTML - boss.Defence.innerHTML);
         boss.Health.innerHTML -= deltaHealth
         boss.Damage.innerHTML = deltaHealth
-        // boss.Damage.style.animation = 'none'
-        // boss.Damage.style.animation = null
-        // boss.Damage.classList.toggle('fade-away')
-        // boss.Damage.style.opacity = '1'
-        // boss.Damage.classList.remove('fade-out')
-        boss.Damage.classList.add('fade-out')
-        setTimeout(_ => boss.Damage.classList.remove('fade-out'), 4000)
+
+        boss.Damage.classList.remove('fade-out')
+        setTimeout(_ => boss.Damage.classList.add('fade-out'), 1)
     } else {
         boss.Damage.innerHTML = null
     }
