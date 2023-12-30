@@ -37,6 +37,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 10px;
+    z-index: 3;
 }
 
 .inventory-menu{
@@ -46,4 +47,40 @@
     height: 333px;
     width: 150px;
     background-color: rgba(250, 235, 215, 0.433);
+}
+
+#player-delta,
+#boss-delta{
+    position: absolute;
+    display: inline;
+    margin: 0 0 0 5%;
+    color: rgba(255, 0, 0, 0.717);
+    /* animation-name: damage;
+    animation-duration: 4s;
+    opacity: 0; */
+    /* transition: opacity 1s; */
+}
+
+.fade-out{
+    /* opacity: 0; */
+    animation-name: damage;
+    animation-duration: 4s;
+    opacity: 0;
+
+    /* transition: opacity ease 1s; */
+    /* animation: damage 4s ease-in-out infinite; */
+}
+
+.fade-in{
+    /* opacity: 1; */
+    animation: damage 4s ease-out 1;
+}
+
+@keyframes damage{
+    0%{opacity: 1;}
+    50%{opacity: 0.65;}
+    100%{
+        opacity: 0;
+        display: none;
+    }
 }
