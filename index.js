@@ -59,7 +59,7 @@ player.actions.Attack.addEventListener('click', _ => {
     if (parseFloat(boss.Defence.innerHTML) < parseFloat(player.Power.innerHTML)) {
         deltaHealth = parseFloat(player.Power.innerHTML - boss.Defence.innerHTML);
         boss.Health.innerHTML -= deltaHealth
-        boss.Damage.innerHTML = deltaHealth
+        boss.Damage.innerHTML = `-${deltaHealth}`
 
         boss.Damage.classList.remove('fade-out')
         setTimeout(_ => boss.Damage.classList.add('fade-out'), 1)
@@ -97,7 +97,10 @@ let bossAction = (bossMove) => {
             if (parseFloat(player.Defence.innerHTML) < parseFloat(boss.Power.innerHTML)) {
                 let deltaHealth = parseFloat(boss.Power.innerHTML - player.Defence.innerHTML);
                 player.Health.innerHTML -= deltaHealth
-                player.Damage.innerHTML = deltaHealth
+                player.Damage.innerHTML = `-${deltaHealth}`
+
+                player.Damage.classList.remove('fade-out')
+                setTimeout(_ => player.Damage.classList.add('fade-out'), 1)
             } else {
                 player.Damage.innerHTML = null
             }
