@@ -140,13 +140,13 @@ let useItem = (entity, index) => {
     if (entity === null) entity = player;
     switch (index) {
         case 0:
-            entity.Health.innerHTML = parseInt(entity.Health.innerHTML) + entity.Inventory[index]
+            entity.Health.innerHTML = parseFloat(entity.Health.innerHTML) + entity.Inventory[index]
             break;
         case 1:
-            entity.Defence.innerHTML = parseInt(entity.Defence.innerHTML) + entity.Inventory[index]
+            entity.Defence.innerHTML = parseFloat(entity.Defence.innerHTML) + entity.Inventory[index]
             break;
         case 2:
-            entity.Power.innerHTML = parseInt(entity.Power.innerHTML) + entity.Inventory[index]
+            entity.Power.innerHTML = parseFloat(entity.Power.innerHTML) + entity.Inventory[index]
             break;
     }
     if (isMenuVisible) bossAction(searchValidNumber())
